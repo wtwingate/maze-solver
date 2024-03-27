@@ -111,3 +111,42 @@ class Maze:
         for column in self._cells:
             for cell in column:
                 cell.visited = False
+
+    def solve(self):
+        result = self._solve_r(0, 0)
+        return result
+
+    def _solve_r(self, x, y):
+        self._animate()
+        current_cell = self._cells[x][y]
+        current_cell.visited = True
+        if current_cell == self._cells[-1][-1]:
+            return True
+        for dir in NEIGHBOR_DIRS:
+            next_x = x + dir[0]
+            next_y = y + dir[1]
+            if (
+                0 <= next_x < self._num_cols
+                and 0 <= next_y < self._num_rows
+                and not self._wall_between(x, y, next_x, next_y)
+                and not self._cells[next_x][next_y].visited
+            ):
+                current_cell.draw_move(self._cells[next_x][next_y])
+                next_result = self._solve_r(self._cells[next_x][next_y])
+                if next_result == True:
+                    return True
+                current_cell.draw_move(self._cells[next_x][next_y], undo=True)
+        return False
+
+    def _wall_between(self, x1, y1, x2, y2):
+        current_cell = self._cells[x1][y1]
+        if x1 == x2 and y1 < y2:
+            return current_cell.south_wall
+        elif x1 == x2 and y1 > y2:
+            return current_cell.north_wall
+        elif x1 < x2 and y1 == y2:
+            return current_cell.east_wall
+        elif x1 > x2 and y1 == y2:
+            return current_cell.west_wall
+        else:
+            raise Exception("Error: invalid cell coordinates")
