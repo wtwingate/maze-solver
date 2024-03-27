@@ -40,8 +40,6 @@ class Maze:
         self._draw_cells()
 
     def _draw_cells(self):
-        if self._window is None:
-            return
         for column in self._cells:
             for cell in column:
                 cell.draw()
@@ -55,6 +53,8 @@ class Maze:
         self._animate()
 
     def _animate(self):
+        if self._window is None:
+            return
         self._window.redraw()
         sleep(0.01)
 
@@ -106,3 +106,8 @@ class Maze:
             raise Exception("Error: invalid cell coordinates")
         self._draw_cell(current_cell)
         self._draw_cell(next_cell)
+
+    def _reset_cells_visited(self):
+        for column in self._cells:
+            for cell in column:
+                cell.visited = False

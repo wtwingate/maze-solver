@@ -23,6 +23,22 @@ class Tests(unittest.TestCase):
         self.assertEqual(maze._cells[0][0].north_wall, False)
         self.assertEqual(maze._cells[-1][-1].south_wall, False)
 
+    def test_reset_cells_visited(self):
+        maze = Maze(0, 0, 10, 10, 10, 10)
+        maze._break_walls_r(0, 0)
+        self.assertTrue(
+            all(
+                all(cell.visited == True for cell in col) == True for col in maze._cells
+            )
+        )
+        maze._reset_cells_visited()
+        self.assertTrue(
+            all(
+                all(cell.visited == False for cell in col) == True
+                for col in maze._cells
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
