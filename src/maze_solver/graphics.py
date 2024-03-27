@@ -27,15 +27,15 @@ class Window:
 
 
 class Point:
-    def __init__(self, x_coord, y_coord):
-        self.x = x_coord
-        self.y = y_coord
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
 
 class Line:
-    def __init__(self, point1, point2):
-        self.__p1 = point1
-        self.__p2 = point2
+    def __init__(self, p1, p2):
+        self.__p1 = p1
+        self.__p2 = p2
 
     def draw(self, canvas, fill_color):
         canvas.create_line(
