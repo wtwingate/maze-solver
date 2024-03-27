@@ -9,6 +9,7 @@ def main():
     num_cols = int((WIN_WIDTH / CELL_SIZE) - 2)
 
     maze = Maze(CELL_SIZE, CELL_SIZE, num_rows, num_cols, CELL_SIZE, CELL_SIZE, window)
+    maze._break_walls_r(0, 0)
 
     window.wait_for_close()
 

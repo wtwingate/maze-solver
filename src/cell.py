@@ -8,6 +8,7 @@ class Cell:
         self.south_wall = True
         self.east_wall = True
         self.west_wall = True
+        self.visited = False
         self._window = window
         # (x1, y1) -> top-left point
         self._x1 = x1
