@@ -3,7 +3,7 @@ from graphics import Line, Point
 
 
 class Cell:
-    def __init__(self, window, x1, y1, x2, y2):
+    def __init__(self, x1, y1, x2, y2, window=None):
         self.north_wall = True
         self.south_wall = True
         self.east_wall = True
