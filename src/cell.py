@@ -19,26 +19,26 @@ class Cell:
     def draw(self):
         if self._window is None:
             return
-        if self.north_wall:
-            self._window.draw_line(
-                Line(Point(self._x1, self._y1), Point(self._x2, self._y1)),
-                WALL_COLOR,
-            )
-        if self.south_wall:
-            self._window.draw_line(
-                Line(Point(self._x1, self._y2), Point(self._x2, self._y2)),
-                WALL_COLOR,
-            )
-        if self.east_wall:
-            self._window.draw_line(
-                Line(Point(self._x2, self._y1), Point(self._x2, self._y2)),
-                WALL_COLOR,
-            )
-        if self.west_wall:
-            self._window.draw_line(
-                Line(Point(self._x1, self._y1), Point(self._x1, self._y2)),
-                WALL_COLOR,
-            )
+        # North Wall
+        self._window.draw_line(
+            Line(Point(self._x1, self._y1), Point(self._x2, self._y1)),
+            WALL_COLOR if self.north_wall else EMPTY_COLOR,
+        )
+        # South Wall
+        self._window.draw_line(
+            Line(Point(self._x1, self._y2), Point(self._x2, self._y2)),
+            WALL_COLOR if self.south_wall else EMPTY_COLOR,
+        )
+        # East Wall
+        self._window.draw_line(
+            Line(Point(self._x2, self._y1), Point(self._x2, self._y2)),
+            WALL_COLOR if self.east_wall else EMPTY_COLOR,
+        )
+        # West Wall
+        self._window.draw_line(
+            Line(Point(self._x1, self._y1), Point(self._x1, self._y2)),
+            WALL_COLOR if self.west_wall else EMPTY_COLOR,
+        )
 
     def center_point(self):
         return Point((self._x1 + self._x2) / 2, (self._y1 + self._y2) / 2)

@@ -35,7 +35,22 @@ class Maze:
             for cell in column:
                 cell.draw()
                 self._animate()
+        self._break_entrance_and_exit()
+
+    def _draw_cell(self, cell):
+        if self._window is None:
+            return
+        cell.draw()
+        self._animate()
 
     def _animate(self):
         self._window.redraw()
         sleep(0.05)
+
+    def _break_entrance_and_exit(self):
+        entrance = self._cells[0][0]
+        exit = self._cells[-1][-1]
+        entrance.north_wall = False
+        self._draw_cell(entrance)
+        exit.south_wall = False
+        self._draw_cell(exit)
