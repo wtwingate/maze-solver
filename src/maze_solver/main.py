@@ -1,16 +1,14 @@
 from graphics import Window
-from cell import Cell
+from maze import Maze
+from constants import WIN_WIDTH, WIN_HEIGHT, CELL_SIZE
 
 
 def main():
-    window = Window(800, 600)
+    window = Window(WIN_WIDTH, WIN_HEIGHT)
+    num_rows = int((WIN_HEIGHT / CELL_SIZE) - 2)
+    num_cols = int((WIN_WIDTH / CELL_SIZE) - 2)
 
-    cell1 = Cell(window, 200, 200, 300, 300)
-    cell2 = Cell(window, 300, 200, 400, 300)
-    cell1.draw()
-    cell2.draw()
-    cell1.draw_move(cell2)
-    cell1.draw_move(cell2, True)
+    maze = Maze(CELL_SIZE, CELL_SIZE, num_rows, num_cols, CELL_SIZE, CELL_SIZE, window)
 
     window.wait_for_close()
 
