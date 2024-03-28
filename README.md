@@ -23,9 +23,9 @@ problems, this is the most likely culprit.
 ## Usage
 
 To run the program, simply `cd` into the directory and run `python3
-src/main.py`. Alternatively, you can run the included shell script with
-`./main.sh`. Then, sit back and watch with _amazement_ as the maze
-automagically creates and solves itself using the power of the [depth-first
+src/main.py`. Alternatively, you can run the included shell script `./main.sh`.
+Then, sit back and watch with _amazement_ as the maze automagically creates and
+solves itself using the power of the [depth-first
 search](https://en.wikipedia.org/wiki/Depth-first_search) algorithm!
 
 You can tinker around with settings in `main.py` to create mazes of different
